@@ -1,0 +1,11 @@
+;Написать функционал, который возвращает T, если найдется хотя бы один элемент списка, для которого предикативная функция fun дает T.
+
+(define (certain fun lst)
+	(cond
+     ((null? lst) nil)
+     ((apply fun (list (first lst))) true)
+     (true (certain fun (rest lst)))
+    )  
+)
+
+(certain integer? '(1 2 e r))

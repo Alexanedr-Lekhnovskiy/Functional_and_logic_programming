@@ -1,0 +1,17 @@
+;Есть список. Сформировать список, содержащий два элемента : сумма и произведение элементов списка.
+
+(define (reduce fun lst init) 
+	(cond
+    	((null? lst) init)
+     	(true (apply fun (list (first lst) (reduce fun (rest lst) init))))
+    )   
+)
+
+;Функция накопления результата
+(define (acc obj lst)
+	(list (+ obj (first lst))
+    	(* obj (nth 1 lst))      
+    )
+)
+
+(reduce 'acc '(1 2 3 4) (list '0 '1))

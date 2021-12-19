@@ -1,0 +1,11 @@
+;Редукция позволяет производить действия рекурсивно с элементами списка lst с условием окончания рекурсии init. fun – функция, которая вызывается для работы с элементами списка lst.
+
+(define (reduce fun lst init) 
+	(cond
+    	((null? lst) init)
+     	(true (apply fun (list (first lst) (reduce fun (rest lst) init))))
+    )   
+)
+
+(reduce '+ '(1 2 3 4) 0)
+(reduce '* '(1 2 3 4) 1)

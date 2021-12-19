@@ -1,0 +1,11 @@
+;Написать функционал, который проверяет выполнение некоторого условия (SYMBOLP/symbol?, INTEGERP/integer?, MINUSP, ZEROP/zero?) для каждого элемента списка.
+
+(define (every fun lst)
+	(cond
+    	((null? lst) true)
+     	((apply fun (list (first lst))) (every fun (rest lst)))
+     	(true nil)
+    )  
+)
+
+(every integer? '(1 2))

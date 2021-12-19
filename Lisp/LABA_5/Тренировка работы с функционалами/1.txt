@@ -1,0 +1,19 @@
+;Написать функционал, выполняющий действие над каждым элементом списка и объединяющий результаты в список.
+
+(define (new_mapping fun lst)
+	(cond
+     ((null? lst) '())
+     (true (cons (apply fun  (list (first lst))) (new_mapping fun (rest lst))))
+    )  
+)
+
+(define (p1 obj)
+	(+ 1 obj)  
+)
+
+(define (m2 obj)
+	(mod obj 2)  
+)
+
+(new_mapping p1 '(2 3 4))
+(new_mapping m2 '(2 3 4))

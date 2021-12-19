@@ -1,0 +1,13 @@
+;Описание редукции с помощью локального определения.
+
+(define (reduce fun lst init)
+	(cond
+		((null? lst) init)
+ 		(true ((lambda (z) (apply fun (list (first lst) z)))
+        	(reduce fun (rest lst) init))))
+)
+
+;При этом результат рекурсивного вызова функции reduce1 для хвоста списка lst становится фактическим параметром лямбдавызова.
+
+(reduce '+ '( 2 5 7) 0)
+(reduce '* '(2 5 7) 1)
